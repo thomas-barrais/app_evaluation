@@ -86,8 +86,8 @@ if uploaded_file is not None: #Pour pas avoir l'erreur quand le fichier n'est pa
         #st.plotly_chart(fig_plotly)
     #except Exception as e:
      #   st.error(f"Erreur lors de l'affichage du graphique : {e}")
-#else :
- #   st.warning("Veuillez importer un fichier Excel pour continuer.")
-#
+else :
+    st.warning("Veuillez importer un fichier Excel pour continuer.")
+
 
 
