@@ -1,11 +1,11 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-from sklearn.preprocessing import OrdinalEncoder
-from sklearn.linear_model import LinearRegression
-import plotly.express as px
+#import pandas as pd
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+#import numpy as np
+#from sklearn.preprocessing import OrdinalEncoder
+#from sklearn.linear_model import LinearRegression
+#import plotly.express as px
 
 # Titre
 st.title("Application Streamlit BARRAIS Evaluation ESTP 2025")
