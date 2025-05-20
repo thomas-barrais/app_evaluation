@@ -43,51 +43,51 @@ if uploaded_file is not None: #Pour pas avoir l'erreur quand le fichier n'est pa
             st.warning(f"Encodage impossible pour la colonne : {col}")
 
     # Calcul des corrélations
-    correlation_matrix = df_encoded.corr()
+    #correlation_matrix = df_encoded.corr()
 
     # Affichage heatmap
-    fig, ax = plt.subplots(figsize=(12, 8))
-    sns.heatmap(correlation_matrix, cmap="coolwarm", annot=True, fmt=".2f", ax=ax)
-    st.pyplot(fig)
+    #fig, ax = plt.subplots(figsize=(12, 8))
+    #sns.heatmap(correlation_matrix, cmap="coolwarm", annot=True, fmt=".2f", ax=ax)
+    #st.pyplot(fig)
 
     st.subheader("Visualisation interactive")
 
-    all_cols = df.columns.tolist()
+    #all_cols = df.columns.tolist()
 
-    x_var = st.selectbox("Choisir la variable X", options=all_cols)
-    y_var = st.selectbox("Choisir la variable Y", options=all_cols)
+    #x_var = st.selectbox("Choisir la variable X", options=all_cols)
+    #y_var = st.selectbox("Choisir la variable Y", options=all_cols)
 
     # Filtre slider sur l'âge
-    if numeric_cols:
-        col_to_filter = numeric_cols[0]
-        min_val, max_val = float(df[col_to_filter].min()), float(df[col_to_filter].max())
-        selected_range = st.slider(
-            f"Filtrer les données sur : {col_to_filter}",
-            min_val,
-            max_val,
-            (min_val, max_val)
-        )
+    #if numeric_cols:
+    #    col_to_filter = numeric_cols[0]
+     #   min_val, max_val = float(df[col_to_filter].min()), float(df[col_to_filter].max())
+      #  selected_range = st.slider(
+       #     f"Filtrer les données sur : {col_to_filter}",
+        #    min_val,
+         #   max_val,
+          #  (min_val, max_val)
+        #)
 
-        df_filtered = df[(df[col_to_filter] >= selected_range[0]) & (df[col_to_filter] <= selected_range[1])]
-    else:
-        df_filtered = df
-        st.info("Aucune variable numérique pour appliquer un filtre.")
+        #df_filtered = df[(df[col_to_filter] >= selected_range[0]) & (df[col_to_filter] <= selected_range[1])]
+    #else:
+     #   df_filtered = df
+      #  st.info("Aucune variable numérique pour appliquer un filtre.")
 
     # Afficher le graphique
-    try:
-        X = df_filtered[[x_var]].values
-        Y = df_filtered[[y_var]].values
-        model = LinearRegression()
-        model.fit(X, Y)
-        y_pred = model.predict(X)
-        df_filtered["Regression"] = y_pred
-        fig_plotly = px.scatter(df_filtered, x=x_var, y=y_var, title=f"{y_var} en fonction de {x_var}")
-        fig_plotly.add_scatter(x=df_filtered[x_var], y=df_filtered["Regression"], mode='lines', name='Regression Linéaire')
-        st.plotly_chart(fig_plotly)
-    except Exception as e:
-        st.error(f"Erreur lors de l'affichage du graphique : {e}")
-else :
-    st.warning("Veuillez importer un fichier Excel pour continuer.")
-
+    #try:
+     #   X = df_filtered[[x_var]].values
+      #  Y = df_filtered[[y_var]].values
+       # model = LinearRegression()
+        #model.fit(X, Y)
+        #y_pred = model.predict(X)
+        #df_filtered["Regression"] = y_pred
+        #fig_plotly = px.scatter(df_filtered, x=x_var, y=y_var, title=f"{y_var} en fonction de {x_var}")
+        #fig_plotly.add_scatter(x=df_filtered[x_var], y=df_filtered["Regression"], mode='lines', name='Regression Linéaire')
+        #st.plotly_chart(fig_plotly)
+    #except Exception as e:
+     #   st.error(f"Erreur lors de l'affichage du graphique : {e}")
+#else :
+ #   st.warning("Veuillez importer un fichier Excel pour continuer.")
+#
 
 
